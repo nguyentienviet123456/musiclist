@@ -1,23 +1,23 @@
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Express' });
+router.get('/', function(req, res) {
+  res.render('index', { title: 'Express Server' });
+});
+
+router.get('/sendjson', (req,res,next) => {
+  res.json(testJSON);
 });
 
 const testJSON = [
   {
-    name: "viet",
-    username: "captain"
-  }, {
-    name: "viet",
-    username: "captain"
+    name: "John Smith",
+    username: "CaptainCode"
+  },
+  {
+    name: "Jane Doe",
+    username: "JaneyCakes"
   }
 ];
-
-router.get('/sendjson', (req, res, next) => {
-  res.json(testJSON);
-});
-
 module.exports = router;
