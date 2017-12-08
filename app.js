@@ -9,8 +9,10 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 const index = require('./routes/index');
+const authentication = require('./routes/api/authentication');
 const api = require('./routes/api/index');
 const users = require('./routes/users');
+
 
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
@@ -57,8 +59,11 @@ app.use(webpackHotMiddleware(webpackCompiler,{
   log: console.log,
 }));
 
-app.use('/*', index);
 app.use('/api', api);
+app.use('/api/user', users);
+app.use('/api/authentication', authentication);
+app.use('/*', index);
+
 const User = require('./models/user');
 
 passport.use(new LocalStrategy(User.authenticate()));

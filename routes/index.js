@@ -3,11 +3,12 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express Server' });
+  res.render('index', { title: 'DEMO MERN' });
 });
 
-router.get('/sendjson', (req,res,next) => {
+router.get('/testsendjson', (req, res) => {
   res.json(testJSON);
+  console.log("testsendjson");
 });
 
 const testJSON = [
